@@ -1,0 +1,12 @@
+.play-game {
+    margin-left: 2px;
+    border: 1px solid black;
+    color: white;
+    background: darkolivegreen;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+.play-game:hover {
+    transform: scale(1.04);
+}
