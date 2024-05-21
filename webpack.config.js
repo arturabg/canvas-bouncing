@@ -3,13 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/canvas.js',
+  entry: './src/js/canvas.ts',
   output: {
     path: __dirname + '/dist/',
-    filename: './js/canvas.bundle.js'
+    filename: './js/canvas.bundle.js',
+    assetModuleFilename: 'assets/[hash][ext][query]' // add this line
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+
+      },
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
@@ -21,10 +28,13 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|ogg|mp3|wav)$/i,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            }
           }
         ]
       },
@@ -44,10 +54,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      favicon: 'favicon.ico',
-      template: 'src/index.html'
+      favicon: 'favicon.png',
+      template: 'src/index.html',
+      inject: false
     })
   ],
   watch: true,
-  devtool: 'source-map'
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  }
 }

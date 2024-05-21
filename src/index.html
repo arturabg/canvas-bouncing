@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Canvas Boilerplate | Chris Courses</title>
+    <title>Canvas bouncing</title>
     <style>
       body {
         width:  100%;
@@ -12,10 +12,33 @@
         display: block;
       }
     </style>
+    <link rel="icon" type="image" href="/favicon.png">
   </head>
   <body>
-    <canvas></canvas>
-    <button type="button" class="play-game">Play game</button>
+    <div class="game-board">
+      <div>
+        <h4 style="color: white">Hello player, you have to choose a gravity surface, select balls count and</br> click on board selecting balls position.
+          Everything easy just click Play button
+        </h4>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center">
+        <div style="margin-bottom: 10px">
+          <label for="planet" style="color: white">Choose a gravity surface</label>
+          <select name="planet" id="planet">
+            <option value="http://localhost:3000/src/assets/earth.jpeg">Earth</option>
+            <option value="http://localhost:3000/src/assets/moon.jpg">Moon</option>
+            <option value="http://localhost:3000/src/assets/sun.jpeg">Sun</option>
+          </select>
+        </div>
+        <div style="margin-top: 10px; margin-bottom: 10px">
+          <label for="count" style="color: white">Choose a circle count</label>
+          <select name="circle-count" id="count">
+          </select>
+        </div>
+        <button type="button" id="playGame" class="play-game">Play</button>
+      </div>
+    </div>
     <script src="js/canvas.bundle.js"></script>
   </body>
 </html>
